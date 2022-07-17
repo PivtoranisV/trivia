@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){
+                // When correct answer clicked
+                let correct = document.querySelector('.correct');
+                correct.addEventListener('click', function() {
+                    correct.style.backgroundColor = 'green';
+                    document.querySelector('#statement1').innerHTML = 'Correct!';
+                });
+                //When incorrect answer clicked
+                let incorrect = document.querySelectorAll('.incorrect');
+                for (let i = 0; i < incorrect.length; i++) {
+                    incorrect[i].addEventListener('click', function () {
+                        incorrect[i].style.backgroundColor = 'red';
+                        document.querySelector('#statement1').innerHTML = 'Incorrect';
+                    });
+                }
+                //Second question
+                document.querySelector('#check').addEventListener('click', function() {
+                    let answer = document.querySelector('input');
+                    if(answer.value === 'Ukraine') {
+                        answer.style.backgroundColor = 'green';
+                        document.querySelector('#statement2').innerHTML = 'Correct!';
+                    } else {
+                        answer.style.backgroundColor = 'red';
+                        document.querySelector('#statement2').innerHTML = 'Incorrect';
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <h3>What is the longest musical instrument in the world?</h3>
+                <button class="incorrect">Clarinet</button>
+                <button class="incorrect">Bassoon</button>
+                <button class="correct">Trembita</button>
+                <button class="incorrect">Trombone</button>
+
+                <p id="statement1"></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>Which country is home to Europe's geographic center?</h3>
+                <input type="text" name="question">
+                <button id="check">Check Answer</button>
+                <p id="statement2"></p>
+            </div>
+        </div>
+    </body>
+</html>
